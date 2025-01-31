@@ -1,0 +1,306 @@
+object frmPedido: TfrmPedido
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = Single
+  Caption = 'Pedido de Venda'
+  ClientHeight = 600
+  ClientWidth = 800
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object lytMain: TLayout
+    Align = Client
+    Size.Width = 800.000000000000000000
+    Size.Height = 600.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lytTop: TLayout
+      Align = Top
+      Size.Width = 800.000000000000000000
+      Size.Height = 121.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object lblCliente: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 16.000000000000000000
+        Text = 'Cliente:'
+        TabOrder = 0
+      end
+      object edtCodCliente: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 1
+        Position.X = 16.000000000000000000
+        Position.Y = 35.000000000000000000
+        Size.Width = 99.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        OnExit = edtCodClienteExit
+      end
+      object btnBuscaCliente: TButton
+        Position.X = 121.000000000000000000
+        Position.Y = 35.000000000000000000
+        Size.Width = 23.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = '...'
+        TextSettings.Trimming = None
+        OnClick = btnBuscaClienteClick
+      end
+      object edtNomeCliente: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 3
+        ReadOnly = True
+        Position.X = 150.000000000000000000
+        Position.Y = 35.000000000000000000
+        Size.Width = 299.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object edtCidadeCliente: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 4
+        ReadOnly = True
+        Position.X = 455.000000000000000000
+        Position.Y = 35.000000000000000000
+        Size.Width = 200.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object edtUFCliente: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 5
+        ReadOnly = True
+        Position.X = 661.000000000000000000
+        Position.Y = 35.000000000000000000
+        Size.Width = 35.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lblProduto: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 64.000000000000000000
+        Text = 'Produto:'
+        TabOrder = 6
+      end
+      object edtCodProduto: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 7
+        Position.X = 16.000000000000000000
+        Position.Y = 83.000000000000000000
+        Size.Width = 99.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        OnExit = edtCodProdutoExit
+      end
+      object btnBuscaProduto: TButton
+        Position.X = 121.000000000000000000
+        Position.Y = 83.000000000000000000
+        Size.Width = 23.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 8
+        Text = '...'
+        TextSettings.Trimming = None
+        OnClick = btnBuscaProdutoClick
+      end
+      object edtDescProduto: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 9
+        ReadOnly = True
+        Position.X = 150.000000000000000000
+        Position.Y = 83.000000000000000000
+        Size.Width = 299.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lblQuantidade: TLabel
+        Position.X = 455.000000000000000000
+        Position.Y = 64.000000000000000000
+        Text = 'Quantidade:'
+        TabOrder = 10
+      end
+      object edtQuantidade: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 11
+        Position.X = 455.000000000000000000
+        Position.Y = 83.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lblValorUnit: TLabel
+        Position.X = 541.000000000000000000
+        Position.Y = 64.000000000000000000
+        Text = 'Valor Unit'#225'rio:'
+        TabOrder = 12
+      end
+      object edtValorUnit: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 13
+        Position.X = 541.000000000000000000
+        Position.Y = 83.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object btnInserirItem: TButton
+        Position.X = 627.000000000000000000
+        Position.Y = 82.000000000000000000
+        Size.Width = 75.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 14
+        Text = 'Inserir'
+        TextSettings.Trimming = None
+        OnClick = btnInserirItemClick
+      end
+    end
+    object lytCenter: TLayout
+      Align = Client
+      Size.Width = 800.000000000000000000
+      Size.Height = 408.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object grdItens: TGrid
+        Align = Client
+        CanFocus = True
+        ClipChildren = True
+        Size.Width = 800.000000000000000000
+        Size.Height = 408.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 780.000000000000000000
+        Viewport.Height = 383.000000000000000000
+        object colCodProduto: TIntegerColumn
+          Header = 'C'#243'digo'
+          HeaderSettings.TextSettings.WordWrap = False
+          Size.Width = 70.000000000000000000
+        end
+        object colDescricao: TStringColumn
+          Header = 'Descri'#231#227'o'
+          HeaderSettings.TextSettings.WordWrap = False
+          Size.Width = 250.000000000000000000
+        end
+        object colQuantidade: TFloatColumn
+          Header = 'Quantidade'
+          HeaderSettings.TextSettings.WordWrap = False
+        end
+        object colValorUnit: TFloatColumn
+          Header = 'Vlr. Unit.'
+          HeaderSettings.TextSettings.WordWrap = False
+        end
+        object colValorTotal: TFloatColumn
+          Header = 'Vlr. Total'
+          HeaderSettings.TextSettings.WordWrap = False
+        end
+        object StringGridBindSourceDB1: TStringGrid
+          CanFocus = True
+          ClipChildren = True
+          Position.X = 728.000000000000000000
+          Position.Y = 356.000000000000000000
+          TabOrder = 5
+          Viewport.Width = 200.000000000000000000
+          Viewport.Height = 100.000000000000000000
+        end
+      end
+    end
+    object lytBottom: TLayout
+      Align = Bottom
+      Position.Y = 529.000000000000000000
+      Size.Width = 800.000000000000000000
+      Size.Height = 71.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object lblTotalPedido: TLabel
+        Position.X = 541.000000000000000000
+        Position.Y = 16.000000000000000000
+        Text = 'Total Pedido:'
+        TabOrder = 0
+      end
+      object edtTotalPedido: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 1
+        ReadOnly = True
+        Position.X = 541.000000000000000000
+        Position.Y = 35.000000000000000000
+        Size.Width = 121.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object btnGravarPedido: TButton
+        Position.X = 668.000000000000000000
+        Position.Y = 33.000000000000000000
+        Size.Width = 113.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Gravar Pedido'
+        TextSettings.Trimming = None
+        OnClick = btnGravarPedidoClick
+      end
+      object btnCarregarPedido: TButton
+        Position.X = 16.000000000000000000
+        Position.Y = 33.000000000000000000
+        Size.Width = 113.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Text = 'Carregar Pedido'
+        TextSettings.Trimming = None
+        OnClick = btnCarregarPedidoClick
+      end
+      object btnCancelarPedido: TButton
+        Position.X = 135.000000000000000000
+        Position.Y = 33.000000000000000000
+        Size.Width = 113.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        Text = 'Cancelar Pedido'
+        TextSettings.Trimming = None
+        OnClick = btnCancelarPedidoClick
+      end
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = mtItens
+    ScopeMappings = <>
+    Left = 320
+    Top = 320
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 412
+    Top = 248
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = grdItens
+      Columns = <>
+    end
+    object LinkGridToDataSourceBindSourceDB12: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGridBindSourceDB1
+      Columns = <>
+    end
+  end
+  object mtItens: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 496
+    Top = 328
+  end
+end
