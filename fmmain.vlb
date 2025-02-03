@@ -36,3 +36,6 @@ Coordinates=227,10,66,33
 [frmPedido.mtItens]
 Visible=False
 
+[frmCadastroCliente.qryClientes]
+Visible=False
+

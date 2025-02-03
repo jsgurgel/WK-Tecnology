@@ -1,0 +1,244 @@
+object frmCadastroProduto: TfrmCadastroProduto
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Cadastro de Produtos'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object pnlTop: TPanel
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lblFiltro: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 16.000000000000000000
+      Text = 'Filtro:'
+      TabOrder = 0
+    end
+    object edtFiltro: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      Position.X = 56.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 481.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      OnKeyDown = edtFiltroKeyDown
+    end
+    object btnPesquisar: TButton
+      Position.X = 545.000000000000000000
+      Position.Y = 12.000000000000000000
+      TabOrder = 2
+      Text = 'Pesquisar'
+      TextSettings.Trimming = None
+      OnClick = btnPesquisarClick
+    end
+  end
+  object grdProdutos: TGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 238.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    RowCount = 0
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 213.000000000000000000
+    object Column1: TColumn
+      Header = 'C'#243'digo'
+      HeaderSettings.TextSettings.WordWrap = False
+      Size.Width = 80.000000000000000000
+    end
+    object Column2: TColumn
+      Header = 'Descri'#231#227'o'
+      HeaderSettings.TextSettings.WordWrap = False
+      Size.Width = 400.000000000000000000
+    end
+    object Column3: TColumn
+      Header = 'Pre'#231'o Venda'
+      HeaderSettings.TextSettings.WordWrap = False
+      Size.Width = 120.000000000000000000
+    end
+  end
+  object pnlBottom: TPanel
+    Align = Bottom
+    Position.Y = 438.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 42.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object btnNovo: TButton
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 0
+      Text = 'Novo'
+      TextSettings.Trimming = None
+      OnClick = btnNovoClick
+    end
+    object btnAlterar: TButton
+      Position.X = 96.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 1
+      Text = 'Alterar'
+      TextSettings.Trimming = None
+      OnClick = btnAlterarClick
+    end
+    object btnExcluir: TButton
+      Position.X = 184.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 2
+      Text = 'Excluir'
+      TextSettings.Trimming = None
+      OnClick = btnExcluirClick
+    end
+    object btnFechar: TButton
+      Position.X = 544.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 3
+      Text = 'Fechar'
+      TextSettings.Trimming = None
+      OnClick = btnFecharClick
+    end
+  end
+  object pnlDados: TPanel
+    Align = Bottom
+    Position.Y = 288.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 150.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object lblCodigo: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Text = 'C'#243'digo:'
+      TabOrder = 0
+    end
+    object edtCodigo: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      ReadOnly = True
+      Position.X = 8.000000000000000000
+      Position.Y = 28.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object lblDescricao: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 56.000000000000000000
+      Text = 'Descri'#231#227'o:'
+      TabOrder = 2
+    end
+    object edtDescricao: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      Position.X = 8.000000000000000000
+      Position.Y = 76.000000000000000000
+      Size.Width = 481.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object lblPrecoVenda: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 104.000000000000000000
+      Text = 'Pre'#231'o Venda:'
+      TabOrder = 4
+    end
+    object edtPrecoVenda: TNumberBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 5
+      Cursor = crIBeam
+      Position.X = 8.000000000000000000
+      Position.Y = 124.000000000000000000
+      Size.Width = 150.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object btnGravar: TButton
+      Position.X = 440.000000000000000000
+      Position.Y = 116.000000000000000000
+      TabOrder = 6
+      Text = 'Gravar'
+      TextSettings.Trimming = None
+      OnClick = btnGravarClick
+    end
+    object btnCancelar: TButton
+      Position.X = 544.000000000000000000
+      Position.Y = 116.000000000000000000
+      TabOrder = 7
+      Text = 'Cancelar'
+      TextSettings.Trimming = None
+      OnClick = btnCancelarClick
+    end
+  end
+  object StringGridBindSourceDB1: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 337.000000000000000000
+    Position.Y = 152.000000000000000000
+    TabOrder = 7
+    Visible = False
+    RowCount = 0
+    Viewport.Width = 196.000000000000000000
+    Viewport.Height = 75.000000000000000000
+  end
+  object qryProdutos: TFDQuery
+    Connection = frmMain.FDConnection1
+    Transaction = frmMain.FDTransaction1
+    SQL.Strings = (
+      
+        'SELECT codigo, descricao, preco_venda FROM produtos Order by des' +
+        'cricao')
+    Left = 304
+    Top = 224
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = qryProdutos
+    ScopeMappings = <>
+    Left = 304
+    Top = 168
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 304
+    Top = 117
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = grdProdutos
+      Columns = <
+        item
+          MemberName = 'codigo'
+          Header = 'C'#243'digo'
+          Width = 80
+        end
+        item
+          MemberName = 'descricao'
+          Header = 'Descri'#231#227'o'
+          Width = 400
+        end
+        item
+          MemberName = 'preco_venda'
+          Header = 'Pre'#231'o Venda'
+          Width = 120
+        end>
+    end
+    object LinkGridToDataSourceBindSourceDB12: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGridBindSourceDB1
+      Columns = <>
+    end
+  end
+end

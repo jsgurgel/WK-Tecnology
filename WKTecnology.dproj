@@ -307,6 +307,27 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="uPedido.pas"/>
+        <DCCReference Include="uFrmBuscaCliente.pas">
+            <Form>frmBuscaCliente</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="fmFormPatterns.pas">
+            <Form>frmFormPatterns</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="uFrmBuscaProduto.pas">
+            <Form>frmBuscaProduto</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="uFrmCadastroCliente.pas">
+            <Form>frmCadastroCliente</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="krUtil.pas"/>
+        <DCCReference Include="uFrmCadastroProduto.pas">
+            <Form>frmCadastroProduto</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

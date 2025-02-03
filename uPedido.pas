@@ -102,30 +102,59 @@ begin
         FNumeroPedido := GetProximoNumeroPedido;
 
       // Grava cabeçalho do pedido
-      QueryPedido.SQL.Text :=
-        'INSERT INTO pedidos (numero_pedido, data_emissao, codigo_cliente, valor_total) ' +
-        'VALUES (:numero_pedido, :data_emissao, :codigo_cliente, :valor_total)';
-        
+      QueryPedido.SQL.Text := 'SELECT COUNT(*) FROM Pedidos WHERE numero_pedido = :numero_pedido';
       QueryPedido.ParamByName('numero_pedido').AsInteger := FNumeroPedido;
-      QueryPedido.ParamByName('data_emissao').AsDate := FDataEmissao;
-      QueryPedido.ParamByName('codigo_cliente').AsInteger := FCodigoCliente;
-      QueryPedido.ParamByName('valor_total').AsFloat := FValorTotal;
-      QueryPedido.ExecSQL;
+      QueryPedido.Open;
+
+      if QueryPedido.Fields[0].AsInteger = 0 then
+      Begin
+        QueryPedido.SQL.Text :=
+          'INSERT INTO pedidos (numero_pedido, data_emissao, codigo_cliente, valor_total) ' +
+          'VALUES (:numero_pedido, :data_emissao, :codigo_cliente, :valor_total)';
+
+        QueryPedido.ParamByName('numero_pedido').AsInteger := FNumeroPedido;
+        QueryPedido.ParamByName('data_emissao').AsDate := FDataEmissao;
+        QueryPedido.ParamByName('codigo_cliente').AsInteger := FCodigoCliente;
+        QueryPedido.ParamByName('valor_total').AsFloat := FValorTotal;
+        QueryPedido.ExecSQL;
+      End
+      Else
+      Begin
+        QueryPedido.SQL.Text := 'UPDATE Pedidos SET data_emissao = :data_emissao, codigo_cliente = :codigo_cliente WHERE numero_pedido = :numero_pedido';
+        QueryPedido.ParamByName('data_emissao').AsDateTime := FDataEmissao;
+        QueryPedido.ParamByName('codigo_cliente').AsInteger := FCodigoCliente;
+      End;
 
       // Grava itens do pedido
       for Item in FItens do
       begin
-        QueryItem.SQL.Text :=
-          'INSERT INTO pedidos_produtos (numero_pedido, codigo_produto, quantidade, ' +
-          'valor_unitario, valor_total) VALUES (:numero_pedido, :codigo_produto, ' +
-          ':quantidade, :valor_unitario, :valor_total)';
-          
+        QueryItem.SQL.Text := 'SELECT COUNT(*) FROM pedidos_produtos WHERE numero_pedido = :numero_pedido AND codigo_produto = :codigo_produto';
         QueryItem.ParamByName('numero_pedido').AsInteger := FNumeroPedido;
         QueryItem.ParamByName('codigo_produto').AsInteger := Item.CodigoProduto;
-        QueryItem.ParamByName('quantidade').AsFloat := Item.Quantidade;
-        QueryItem.ParamByName('valor_unitario').AsFloat := Item.ValorUnitario;
-        QueryItem.ParamByName('valor_total').AsFloat := Item.ValorTotal;
-        QueryItem.ExecSQL;
+        QueryItem.Open;
+        //
+        if QueryItem.Fields[0].AsInteger = 0 then
+        Begin
+          QueryItem.SQL.Text :=
+            'INSERT INTO pedidos_produtos (numero_pedido, codigo_produto, quantidade, ' +
+            'valor_unitario, valor_total) VALUES (:numero_pedido, :codigo_produto, ' +
+            ':quantidade, :valor_unitario, :valor_total)';
+
+          QueryItem.ParamByName('numero_pedido').AsInteger := FNumeroPedido;
+          QueryItem.ParamByName('codigo_produto').AsInteger := Item.CodigoProduto;
+          QueryItem.ParamByName('quantidade').AsFloat := Item.Quantidade;
+          QueryItem.ParamByName('valor_unitario').AsFloat := Item.ValorUnitario;
+          QueryItem.ParamByName('valor_total').AsFloat := Item.ValorTotal;
+          QueryItem.ExecSQL;
+        End
+        Else
+        Begin
+          QueryItem.SQL.Text := 'UPDATE pedidos_produtos SET Quantidade = :Quantidade, valor_unitario = :valor_unitario, valor_total = :valor_total WHERE numero_pedido = :numero_pedido AND codigo_produto = :codigo_produto';
+          QueryItem.ParamByName('Quantidade').AsFloat := Item.Quantidade;
+          QueryItem.ParamByName('valor_unitario').AsFloat := Item.ValorUnitario;
+          QueryItem.ParamByName('valor_total').AsFloat := Item.ValorTotal;
+          QueryItem.ExecSQL;
+        End;
       end;
 
       Transaction.Commit;

@@ -1,0 +1,12 @@
+object frmFormPatterns: TfrmFormPatterns
+  Left = 0
+  Top = 0
+  Caption = 'Formul'#225'rio padr'#227'o'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnKeyDown = FormKeyDown
+  DesignerMasterStyle = 0
+end

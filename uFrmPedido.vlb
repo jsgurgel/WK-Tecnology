@@ -101,3 +101,9 @@ Coordinates=741,56,68,36
 [StringGridBindSourceDB1]
 Coordinates=591,364,164,58
 
+[frmBuscaCliente.qryClientes]
+Visible=False
+
+[frmBuscaProduto.qryProdutos]
+Visible=False
+

@@ -10,6 +10,7 @@ object frmMain: TfrmMain
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
+  OnCloseQuery = FormCloseQuery
   OnDestroy = FormDestroy
   DesignerMasterStyle = 0
   object Image1: TImage
@@ -19292,6 +19293,16 @@ object frmMain: TfrmMain
     Top = 96
     object mnCadastro: TMenuItem
       Text = 'Cadastro'
+      object mnCadCliente: TMenuItem
+        Locked = True
+        Text = 'Cadastro de cliente'
+        OnClick = mnCadClienteClick
+      end
+      object mnCadProduto: TMenuItem
+        Locked = True
+        Text = 'Cadastro de Produto'
+        OnClick = mnCadProdutoClick
+      end
       object mnClose: TMenuItem
         Locked = True
         Text = 'Fechar'
@@ -19313,6 +19324,7 @@ object frmMain: TfrmMain
       'Password=T2@qyep@oE;}*=f]k{zv'
       'Database=vendas_db'
       'DriverID=WK_Vendas')
+    Connected = True
     LoginPrompt = False
     Transaction = FDTransaction1
     UpdateTransaction = FDTransaction1

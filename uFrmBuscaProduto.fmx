@@ -1,0 +1,166 @@
+object frmBuscaProduto: TfrmBuscaProduto
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Busca de Produtos'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = OwnerFormCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  DesignerMasterStyle = 0
+  object pnlTop: TPanel
+    Align = Top
+    Padding.Left = 8.000000000000000000
+    Padding.Top = 8.000000000000000000
+    Padding.Right = 8.000000000000000000
+    Padding.Bottom = 8.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lblFiltro: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Filtro:'
+      TabOrder = 0
+    end
+    object edtFiltro: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 537.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      OnKeyDown = edtFiltroKeyDown
+    end
+    object btnPesquisar: TButton
+      Position.X = 553.000000000000000000
+      Position.Y = 23.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Pesquisar'
+      TextSettings.Trimming = None
+      OnClick = btnPesquisarClick
+    end
+  end
+  object pnlBottom: TPanel
+    Align = Bottom
+    Padding.Left = 8.000000000000000000
+    Padding.Top = 8.000000000000000000
+    Padding.Right = 8.000000000000000000
+    Padding.Bottom = 8.000000000000000000
+    Position.Y = 430.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object btnSelecionar: TButton
+      Anchors = [akTop, akRight]
+      Position.X = 453.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Selecionar'
+      TextSettings.Trimming = None
+      OnClick = btnSelecionarClick
+    end
+    object btnCancelar: TButton
+      Anchors = [akTop, akRight]
+      Position.X = 541.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Cancelar'
+      TextSettings.Trimming = None
+      OnClick = btnCancelarClick
+    end
+  end
+  object grdProdutos: TStringGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 373.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    RowCount = 0
+    Options = [ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, Header, HeaderClick, AutoDisplacement]
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 348.000000000000000000
+  end
+  object qryProdutos: TFDQuery
+    Connection = frmMain.FDConnection1
+    Transaction = frmMain.FDTransaction1
+    SQL.Strings = (
+      'SELECT codigo, descricao, preco_venda FROM produtos')
+    Left = 288
+    Top = 224
+    object qryProdutoscodigo: TFDAutoIncField
+      FieldName = 'codigo'
+      Origin = 'codigo'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+    end
+    object qryProdutosdescricao: TStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Required = True
+      Size = 100
+    end
+    object qryProdutospreco_venda: TBCDField
+      FieldName = 'preco_venda'
+      Origin = 'preco_venda'
+      Required = True
+      Precision = 10
+      Size = 2
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = qryProdutos
+    ScopeMappings = <>
+    Left = 376
+    Top = 224
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 452
+    Top = 224
+    object LinkGridToDataSourceBindSourceDB12: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = grdProdutos
+      Columns = <
+        item
+          MemberName = 'codigo'
+          Header = 'C'#243'digo'
+          Width = 70
+        end
+        item
+          MemberName = 'descricao'
+          Header = 'Descri'#231#227'o'
+          Width = 250
+        end
+        item
+          MemberName = 'preco_venda'
+          Header = 'Pre'#231'o venda'
+          Width = 200
+        end>
+    end
+  end
+end

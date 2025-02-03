@@ -1,0 +1,271 @@
+object frmCadastroCliente: TfrmCadastroCliente
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Cadastro de Clientes'
+  ClientHeight = 480
+  ClientWidth = 800
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object pnlTop: TPanel
+    Align = Top
+    Padding.Left = 8.000000000000000000
+    Padding.Top = 8.000000000000000000
+    Padding.Right = 8.000000000000000000
+    Padding.Bottom = 8.000000000000000000
+    Size.Width = 800.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lblFiltro: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Filtro:'
+      TabOrder = 0
+    end
+    object edtFiltro: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 697.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      OnKeyDown = edtFiltroKeyDown
+    end
+    object btnPesquisar: TButton
+      Position.X = 713.000000000000000000
+      Position.Y = 23.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Pesquisar'
+      TextSettings.Trimming = None
+      OnClick = btnPesquisarClick
+    end
+  end
+  object grdClientes: TGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 800.000000000000000000
+    Size.Height = 373.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 780.000000000000000000
+    Viewport.Height = 348.000000000000000000
+    object Column1: TColumn
+      Header = 'C'#243'digo'
+      HeaderSettings.TextSettings.WordWrap = False
+      Size.Width = 70.000000000000000000
+    end
+    object Column2: TColumn
+      Header = 'Nome'
+      HeaderSettings.TextSettings.WordWrap = False
+      Size.Width = 200.000000000000000000
+    end
+    object Column3: TColumn
+      Header = 'Cidade'
+      HeaderSettings.TextSettings.WordWrap = False
+      Size.Width = 200.000000000000000000
+    end
+    object Column4: TColumn
+      Header = 'UF'
+      HeaderSettings.TextSettings.WordWrap = False
+      Size.Width = 50.000000000000000000
+    end
+  end
+  object pnlBottom: TPanel
+    Align = Bottom
+    Padding.Left = 8.000000000000000000
+    Padding.Top = 8.000000000000000000
+    Padding.Right = 8.000000000000000000
+    Padding.Bottom = 8.000000000000000000
+    Position.Y = 430.000000000000000000
+    Size.Width = 800.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object btnNovo: TButton
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Novo'
+      TextSettings.Trimming = None
+      OnClick = btnNovoClick
+    end
+    object btnAlterar: TButton
+      Position.X = 96.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Alterar'
+      TextSettings.Trimming = None
+      OnClick = btnAlterarClick
+    end
+    object btnExcluir: TButton
+      Position.X = 184.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Excluir'
+      TextSettings.Trimming = None
+      OnClick = btnExcluirClick
+    end
+    object btnFechar: TButton
+      Anchors = [akTop, akRight]
+      Position.X = 713.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Fechar'
+      TextSettings.Trimming = None
+      OnClick = btnFecharClick
+    end
+  end
+  object pnlDados: TPanel
+    Align = Center
+    Size.Width = 400.000000000000000000
+    Size.Height = 250.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object lblCodigo: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'C'#243'digo:'
+      TabOrder = 0
+    end
+    object edtCodigo: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      ReadOnly = True
+      Position.X = 16.000000000000000000
+      Position.Y = 35.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object lblNome: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 67.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Nome:'
+      TabOrder = 2
+    end
+    object edtNome: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      Position.X = 16.000000000000000000
+      Position.Y = 86.000000000000000000
+      Size.Width = 368.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object lblCidade: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 118.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Cidade:'
+      TabOrder = 4
+    end
+    object edtCidade: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 5
+      Position.X = 16.000000000000000000
+      Position.Y = 137.000000000000000000
+      Size.Width = 288.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object lblUF: TLabel
+      Position.X = 312.000000000000000000
+      Position.Y = 118.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'UF:'
+      TabOrder = 6
+    end
+    object edtUF: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 7
+      MaxLength = 2
+      Position.X = 312.000000000000000000
+      Position.Y = 137.000000000000000000
+      Size.Width = 72.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object btnGravar: TButton
+      Position.X = 224.000000000000000000
+      Position.Y = 208.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Text = 'Gravar'
+      TextSettings.Trimming = None
+      OnClick = btnGravarClick
+    end
+    object btnCancelar: TButton
+      Position.X = 312.000000000000000000
+      Position.Y = 208.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 9
+      Text = 'Cancelar'
+      TextSettings.Trimming = None
+      OnClick = btnCancelarClick
+    end
+  end
+  object qryClientes: TFDQuery
+    Connection = frmMain.FDConnection1
+    Transaction = frmMain.FDTransaction1
+    Left = 288
+    Top = 224
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = qryClientes
+    ScopeMappings = <>
+    Left = 376
+    Top = 224
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 452
+    Top = 224
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = grdClientes
+      Columns = <>
+    end
+  end
+end
